@@ -2,13 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 import styles from './style';
 import LeftMenu from 'components/history';
-import { withStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import {AppBar, Toolbar, Typography, IconButton, withStyles, InputAdornment, TextField} from '@material-ui/core';
 import HistoryIcon from '@material-ui/icons/History';
+import SearchIcon from '@material-ui/icons/Search';
 
 class PersistentDrawer extends React.Component {
 	state = {
@@ -32,7 +28,7 @@ class PersistentDrawer extends React.Component {
 							<HistoryIcon />
 						</IconButton>
 						<Typography variant="title" color="inherit" noWrap>
-							Persistent drawer
+							QR Music Generator
 			  			</Typography>
 					</Toolbar>
 				</AppBar>
@@ -41,7 +37,16 @@ class PersistentDrawer extends React.Component {
 
 				<div className={classNames(classes.content, { [classes.contentShift]: open })}>
 					<div className={classes.drawerHeader} />
-					<Typography className={classes.container}>{'You think water moves fast? You should see ice.'}</Typography>
+					<Typography component='div' className={classes.container}>
+						<TextField
+							placeholder="Type to search for album or artist"
+							fullWidth={true}
+							InputProps={{
+								startAdornment: (
+									<InputAdornment position="start" children={<SearchIcon />} />
+								)
+							}} />
+					</Typography>
 				</div>
 
 			</div>
